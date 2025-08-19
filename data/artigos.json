@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Começando com Next.js 15 e App Router",
+        "author": "João Silva",
+        "date": "2024-06-15",
+        "description": "Uma introdução ao Next.js 15 e ao novo App Router, explorando suas funcionalidades e benefícios.",
+        "content": "<p>Next.js 15 traz uma série de melhorias e novas funcionalidades, incluindo o App Router, que facilita a navegação e o gerenciamento de rotas em aplicações React...</p>"
+    },
+
+    {
+        "title": "Melhores Práticas para Desenvolvimento Web em 2024",
+        "author": "Maria Oliveira",
+        "date": "2024-06-10",
+        "description": "Dicas e melhores práticas para desenvolvimento web moderno, focando em performance, acessibilidade e SEO.",
+        "content": "<p>Em 2024, o desenvolvimento web continua a evoluir rapidamente. Aqui estão algumas das melhores práticas que você deve considerar ao construir suas aplicações...</p>"
+    }
+]
