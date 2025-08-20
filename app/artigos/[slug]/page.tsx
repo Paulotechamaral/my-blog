@@ -36,7 +36,6 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     },
   };
 }
-
 export default async function ArtigoPage(props: Props) {
   const { params } = await props; // ✅ await também aqui
   const artigo = await getArtigosbySlug(params.slug);
