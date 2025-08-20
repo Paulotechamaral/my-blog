@@ -2,25 +2,19 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getAllArtigos, getArtigosbySlug } from "@/lib/artigos";
 import { formatDate } from "@/lib/formatDate";
+type Props = {params: {slug: string;};};
 
-type Props = { params: { slug: string } };
-
-// --- 10.1: SSG ---
 export async function generateStaticParams() {
   const artigos = await getAllArtigos();
   return artigos.map((a) => ({ slug: a.slug }));
 }
 
-// --- 10.2: SEO dinâmico ---
 export async function generateMetadata(props: Props): Promise<Metadata> {
-  const { params } = await props; // ✅ aguarda os params
+  const { params } = await props; // ✅ await para resolver o promise
   const artigo = await getArtigosbySlug(params.slug);
 
   if (!artigo) {
-    return {
-      title: "Artigo não encontrado",
-      description: "Este artigo não existe.",
-    };
+    return { title: "Artigo não encontrado", description: "Este artigo não existe." };
   }
 
   const url = `https://my-blog.vercel.app/artigos/${artigo.slug}`;
@@ -32,9 +26,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     openGraph: {
       type: "article",
       title: artigo.title,
-      description: artigo.description,
-      url,
-      images: [ogImage],
+      description: artigo.description,url,images: [ogImage],
     },
     twitter: {
       card: "summary_large_image",
@@ -45,11 +37,8 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   };
 }
 
-
-// --- 10.3: Página do artigo ---
 export default async function ArtigoPage(props: Props) {
-  // aguarda o params
-  const { params } = await props;
+  const { params } = await props; // ✅ await também aqui
   const artigo = await getArtigosbySlug(params.slug);
 
   if (!artigo) notFound();
@@ -64,4 +53,3 @@ export default async function ArtigoPage(props: Props) {
     </article>
   );
 }
-
